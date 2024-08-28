@@ -39,10 +39,12 @@ func genFile(c fileGenConfig) error {
 	if len(c.category) == 0 || len(c.templateFile) == 0 {
 		text = c.builtinTemplate
 	} else {
+
 		text, err = pathx.LoadTemplate(c.category, c.templateFile, c.builtinTemplate)
 		if err != nil {
 			return err
 		}
+		fmt.Println("text:", text)
 	}
 
 	t := template.Must(template.New(c.templateName).Parse(text))
