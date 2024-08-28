@@ -141,6 +141,7 @@ func GetCacheDir() (string, error) {
 // GetTemplateDir returns the category path value in GoctlHome where could get it by GetGoctlHome.
 func GetTemplateDir(category string) (string, error) {
 	home, err := GetGoctlHome()
+	fmt.Println("home:", home)
 	if err != nil {
 		return "", err
 	}
@@ -221,6 +222,8 @@ func LoadTemplate(category, file, builtin string) (string, error) {
 
 	file = filepath.Join(dir, file)
 	if !FileExists(file) {
+		fmt.Println("file:", file)
+		fmt.Println("file:", builtin)
 		return builtin, nil
 	}
 
